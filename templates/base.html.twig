@@ -45,7 +45,7 @@
     </head>
     <body data-theme="corporate">
         {% block navbar %}
-            <div class="navbar bg-base-100 shadow-sm px-10 py-5">
+            <div class="navbar bg-base-100 shadow-sm px-10 py-2">
                 <div class="flex-1 align-middle">
                     <a href="{{ path('home') }}">
                         <img src="{{ asset('image/logo.svg') }}" alt="Logo" class="w-12 h-12 rounded-lg bg-base-100">
@@ -76,11 +76,7 @@
         {% block body %}{% endblock %}
 
         {% block footer %}
-            <div class="mt-10 pb-10">
-                <a href="https://itsrbija.org">
-                    <img src="{{ asset('image/logo.svg') }}" alt="IT Srbija logo" class="mx-auto w-12 h-12 rounded-lg bg-base-100">
-                </a>
-            </div>
+            <div class="bg-base-100 h-13"></div>
         {% endblock %}
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

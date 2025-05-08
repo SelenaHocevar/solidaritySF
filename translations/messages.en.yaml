@@ -33,7 +33,7 @@ TransactionWaitingPayment: Čeka se uplata
 TransactionWaitingConfirmation: Čeka se potvrda od prosvetnog radnika
 TransactionExpired: Istekla
 TransactionNotPaid: Uplata nije primljena
-TransactionConfirmed: Potvrđena
+TransactionConfirmed: Uplata potvrđena
 TransactionCancelled: Otkazana
 
 DamagedEducatorNew: Aktivan

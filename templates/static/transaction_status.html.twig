@@ -9,12 +9,21 @@
             </h2>
 
             <div class="space-y-4">
-                <div>{{ 1|transaction_status|raw }} - Kada je instrukcija za uplatu napravljena i čeka se uplata od strane donatora.</div>
-                <div>{{ 2|transaction_status|raw }} - Donator je označio da je uplata izvršena i sada se čeka potvrda od strane delegata.</div>
-                <div>{{ 6|transaction_status|raw }} - Prošlo je 72 sata od kreiranja instrukcije i instrukcija za uplatu je automatski prebačena u ovaj status, pošto donator, iako je bio aktivan na sajtu, nije potvrdio da je uplata izvršena. Instrukcija može isteći samo ako je bila u statusu "{{ 1|transaction_status|raw }}".</div>
-                <div>{{ 4|transaction_status|raw }} - Sistem je automatski otkazao instrukciju zbog greške (npr. pogrešan broj računa, oštećeni je odustao od pomoći i slično) ili je delegat obrisao oštećenog korisnika, pa su sve njegove instrukcije otkazane.</div>
-                <div>{{ 5|transaction_status|raw }} - Delegat je ručno označio da uplata nije primljena ili je sistem automatski detektovao da uplata nije izvršena jer donator nije pristupio sajtu od trenutka kreiranja instrukcije.</div>
-                <div>{{ 3|transaction_status|raw }} - Delegat je potvrdio da je uplata uspešno izvršena.</div>
+                {% set statuses = [
+                    { id: 1, description: 'Instrukcija je aktivna, donator još nije označio da je uplatio.' },
+                    { id: 2, description: 'Donator je označio da je uplata izvršena. Čeka se potvrda delegata.' },
+                    { id: 6, description: 'Prošlo je 72h bez označene uplate, instrukcija je automatski zatvorena.' },
+                    { id: 4, description: 'Došlo je do sistemske greške (npr. pogrešan broj računa).' },
+                    { id: 5, description: 'Delegat je označio da uplata nije stigla.' },
+                    { id: 3, description: 'Delegat je potvrdio da je uplata uspešno realizovana.' }
+                ] %}
+
+                {% for status in statuses %}
+                    <div>
+                        <div>{{ status.id|transaction_status|raw }}</div>
+                        <div class="ml-8 text-gray-500">{{ status.description }}</div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>

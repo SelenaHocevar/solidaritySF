@@ -25,15 +25,17 @@ class TransactionStatusExtension extends AbstractExtension
         $allStatus = Transaction::STATUS;
         $statusName = $this->translator->trans($allStatus[$status]) ?? 'None';
 
-        $icon = match ($status) {
-            Transaction::STATUS_NEW => '<span class="ti ti-clock text-xl text-gray-500 relative top-0.5"></span>',
-            Transaction::STATUS_WAITING_CONFIRMATION => '<span class="ti ti-clock text-xl text-gray-500 relative top-0.5"></span>',
-            Transaction::STATUS_EXPIRED => '<span class="ti ti-circle-x text-xl relative top-0.5"></span>',
-            Transaction::STATUS_CONFIRMED => '<span class="ti ti-circle-check text-xl text-success relative top-0.5"></span>',
-            Transaction::STATUS_NOT_PAID => '<span class="ti ti-circle-x text-xl relative top-0.5"></span>',
-            Transaction::STATUS_CANCELLED => '<span class="ti ti-circle-x text-xl relative top-0.5"></span>',
+        $iconPath = match ($status) {
+            Transaction::STATUS_NEW => '/icons/hourglass.svg',
+            Transaction::STATUS_WAITING_CONFIRMATION => '/icons/status-waiting-confirmation.svg',
+            Transaction::STATUS_EXPIRED => '/icons/status-expired.svg',
+            Transaction::STATUS_CONFIRMED => '/icons/status-confirmed.svg',
+            Transaction::STATUS_NOT_PAID => '/icons/status-not-paid.svg',
+            Transaction::STATUS_CANCELLED => '/icons/status-cancelled.svg',
         };
+    
+        $icon = ' <img src="'.$iconPath.'" alt="'.$statusName.'" class="w-5 h-5 inline-block mr-1.5 relative -translate-y-0.5" />';
 
-        return $icon.' <span class="text-gray-500">'.$statusName.'</span>';
+        return $icon.' <span class="font-medium">'.$statusName.'</span>';
     }
 }

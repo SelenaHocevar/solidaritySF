@@ -36,6 +36,6 @@ class TransactionStatusExtension extends AbstractExtension
 
         $icon = ' <img src="'.$iconPath.'" alt="'.$statusName.'" class="w-5 h-5 inline-block mr-1.5 relative -translate-y-0.5" />';
 
-        return $icon.' <span class="font-medium">'.$statusName.'</span>';
+        return $icon.' <span>'.$statusName.'</span>';
     }
 }
